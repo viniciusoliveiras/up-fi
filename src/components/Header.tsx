@@ -1,9 +1,19 @@
-import { Box, Flex, Button, useDisclosure, Image } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Button,
+  useDisclosure,
+  Image,
+  useBreakpointValue,
+} from '@chakra-ui/react';
 
 import { ModalAddImage } from './Modal/AddImage';
 
 export function Header(): JSX.Element {
   const { onOpen, isOpen, onClose } = useDisclosure();
+
+  const paddingX = useBreakpointValue({ base: 4, md: 16, lg: 20 });
+  const imageHeight = useBreakpointValue({ base: 8, md: 10 });
 
   return (
     <>
@@ -13,10 +23,10 @@ export function Header(): JSX.Element {
           alignItems="center"
           maxW={1120}
           mx="auto"
-          px={20}
+          px={paddingX}
           py={6}
         >
-          <Image src="logo.svg" h={10} />
+          <Image src="logo.svg" h={imageHeight} />
           <Button onClick={() => onOpen()}>Adicionar imagem</Button>
         </Flex>
       </Box>

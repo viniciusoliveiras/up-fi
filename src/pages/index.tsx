@@ -1,4 +1,4 @@
-import { Button, Box } from '@chakra-ui/react';
+import { Button, Box, useBreakpointValue } from '@chakra-ui/react';
 import { useMemo } from 'react';
 import { useInfiniteQuery } from 'react-query';
 
@@ -39,6 +39,8 @@ export default function Home(): JSX.Element {
     return data;
   }
 
+  const paddingX = useBreakpointValue({ base: 10, md: 20 });
+
   const {
     data,
     isLoading,
@@ -75,7 +77,7 @@ export default function Home(): JSX.Element {
     <>
       <Header />
 
-      <Box maxW={1120} px={20} mx="auto" my={20}>
+      <Box maxW={1120} px={paddingX} mx="auto" my={20}>
         <CardList cards={formattedData} />
         {hasNextPage && (
           <Button

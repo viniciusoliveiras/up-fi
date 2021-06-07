@@ -22,9 +22,19 @@ export function ModalViewImage({
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <ModalContent maxW="900px" maxH="600px">
+      <ModalContent
+        maxW={{ base: '380px', md: '700px', lg: '900px' }}
+        maxH={{ base: '400px', md: '450px', lg: '600px' }}
+        bg="transparent"
+        w="auto"
+        h="auto"
+      >
         <ModalBody p="0">
-          <Image src={imgUrl} borderTopRadius="6px" />
+          <Image
+            src={imgUrl}
+            maxW={{ base: '380px', md: '700px', lg: '900px' }}
+            maxH={{ base: '400px', md: '450px', lg: '600px' }}
+          />
         </ModalBody>
 
         <ModalFooter
