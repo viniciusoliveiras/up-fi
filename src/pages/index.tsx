@@ -46,15 +46,9 @@ export default function Home(): JSX.Element {
     isFetchingNextPage,
     fetchNextPage,
     hasNextPage,
-  } = useInfiniteQuery(
-    'images',
-    // TODO AXIOS REQUEST WITH PARAM
-    fetchImages,
-    // TODO GET AND RETURN NEXT PAGE PARAM
-    {
-      getNextPageParam: lastPage => lastPage.after ?? null,
-    }
-  );
+  } = useInfiniteQuery('images', fetchImages, {
+    getNextPageParam: lastPage => lastPage.after ?? null,
+  });
 
   const formattedData = useMemo(() => {
     let formattedDataTotal = [] as Card[];
@@ -83,7 +77,15 @@ export default function Home(): JSX.Element {
 
       <Box maxW={1120} px={20} mx="auto" my={20}>
         <CardList cards={formattedData} />
-        {hasNextPage && <Button>Carregar mais</Button>}
+        {hasNextPage && (
+          <Button
+            onClick={() => {
+              fetchNextPage();
+            }}
+          >
+            {isFetchingNextPage ? 'Carregando...' : 'Carregar mais'}
+          </Button>
+        )}
       </Box>
     </>
   );
