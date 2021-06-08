@@ -5,6 +5,7 @@ import {
   ModalHeader,
   ModalBody,
   ModalCloseButton,
+  useBreakpointValue,
 } from '@chakra-ui/react';
 
 import { FormAddImage } from '../Form/FormAddImage';
@@ -22,6 +23,8 @@ export function ModalAddImage({
     onClose();
   };
 
+  const paddingX = useBreakpointValue({ base: 10, md: 60 });
+
   return (
     <Modal isOpen={isOpen} onClose={handleCloseModal} isCentered size="4xl">
       <ModalOverlay />
@@ -30,7 +33,7 @@ export function ModalAddImage({
 
         <ModalCloseButton />
 
-        <ModalBody px={60}>
+        <ModalBody px={paddingX}>
           <FormAddImage closeModal={handleCloseModal} />
         </ModalBody>
       </ModalContent>
